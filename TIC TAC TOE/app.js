@@ -19,10 +19,11 @@ let scoreNull = 0
 
 function createBoard() {
   grille.innerHTML = "";
-  cells.forEach((_, index) => {
+  cells.forEach((cellValue, index) => {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     cell.dataset.index = index;
+    cell.textContent = cellValue
     cell.addEventListener("click", clickCase);
     grille.appendChild(cell);
   });
@@ -38,7 +39,7 @@ function clickCase(e) {
   const victoire = checkWin();
 
   if (victoire) {
-    statut.textContent = `Le joueur ${joueur} a gagné !`;
+    statut.textContent = `Le joueur ${joueur} a gagné  🎉🎉🎊!`;
 
     if (joueur === "X") {
       scoreX++;
@@ -51,7 +52,7 @@ function clickCase(e) {
     joueurCourant = false;
 
   } else if (cells.every(cell => cell !== "")) {
-    statut.textContent = "Match Nul !";
+    statut.textContent = "Match Nul 😑😣 !";
     scoreNull++;
     matchNull.textContent = scoreNull;
     joueurCourant = false;
